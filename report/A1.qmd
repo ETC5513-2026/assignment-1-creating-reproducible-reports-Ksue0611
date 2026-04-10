@@ -1,0 +1,29 @@
+---
+title: "Assignment 1"
+author: "KAI-HONG SU"
+format:
+    pdf:
+        toc: true
+    html: 
+        toc: true
+---
+
+```{r setup}
+#| echo: false
+#| warning: false
+#| message: false
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(ggplot2)
+library(here)
+```
+
+```{r}
+data <- read.csv(here::here("data/35480211_Kai-Hong Su.csv"))
+```
+
+## Introduction
+The data analys customer behavior using a marketing dataset. In the datset, there are marketing spend, visit, purchase, and segment for each customer. With these information we can understand whether the marktet spend on customer have positive effect.
+
+## Research Question section
