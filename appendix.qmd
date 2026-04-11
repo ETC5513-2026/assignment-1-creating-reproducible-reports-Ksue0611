@@ -1,0 +1,102 @@
+---
+title: "Appendix: AI Use Declaration"
+format: html
+---
+
+## AI Acknowledgement
+
+I used ChatGPT to correct my English and to assist with my R code in this assignment. In particular, I used it to identify coding errors, improve existing code, and refine the wording of my report sections. I used ChatGPT over multiple iterations while preparing the analysis. I modified the outputs by reviewing, rewriting, and adapting them to match my own understanding, analysis, and final presentation.
+
+## Understand the dataset
+
+This interaction was used to understand more about the dataset.
+
+![Screenshot 1](images/screenshot1-1.png)
+
+![Screenshot 2](images/screenshot1-2.png)
+
+## Code debugging
+
+This interaction was used to ask how to fix the error.
+
+![Screenshot 3](images/screenshot2-1.png)
+
+![Screenshot 4](images/screenshot2-2.png)
+
+![Screenshot 5](images/screenshot2-3.png)
+
+## Qusetion about inline R code
+
+This interaction was used to ask how to use inline R code and how to round values to two decimal places.
+
+![Screenshot 6](images/screenshot3-1.png)
+
+![Screenshot 7](images/screenshot3-2.png)
+
+
+
+## Language support
+
+This interaction was used to correct the grammer.
+
+![Screenshot 8](images/screenshot4-1.png)
+
+![Screenshot 9](images/screenshot4-2.png)
+
+## Data visualisation
+
+This interaction was used to select an appropriate plot type for marketing spend and visits.
+
+![Screenshot 10](images/screenshot5-1.png)
+
+![Screenshot 11](images/screenshot5-2.png)
+
+## Question for coding
+
+This interaction was used to explain the `geom_smooth()` message in ggplot and clarify the meaning of the formula used in the visualisation.
+
+![Screenshot 12](images/screenshot6-1.png)
+
+![Screenshot 13](images/screenshot6-2.png)
+
+## Qusetion about inline R code
+
+This interaction was used to explain how to show correlation between marketing spend and purchase amount.
+
+![Screenshot 14](images/screenshot7-1.png)
+
+![Screenshot 15](images/screenshot7-2.png)
+
+## Language support
+
+This interaction was used to correct the grammer and spelling.
+
+![Screenshot 16](images/screenshot8-1.png)
+
+![Screenshot 17](images/screenshot8-2.png)
+
+![Screenshot 18](images/screenshot8-3.png)
+
+![Screenshot 19](images/screenshot8-4.png)
+
+![Screenshot 20](images/screenshot8-5.png)
+
+![Screenshot 21](images/screenshot8-6.png)
+
+![Screenshot 22](images/screenshot8-7.png)
+
+![Screenshot 23](images/screenshot8-8.png)
+
+![Screenshot 24](images/screenshot8-9.png)
+
+![Screenshot 25](images/screenshot8-10.png)
+
+![Screenshot 26](images/screenshot8-11.png)
+
+![Screenshot 27](images/screenshot8-12.png)
+
+![Screenshot 28](images/screenshot8-13.png)
+
+![Screenshot 29](images/screenshot8-14.png)
+
+![Screenshot 30](images/screenshot8-15.png)
