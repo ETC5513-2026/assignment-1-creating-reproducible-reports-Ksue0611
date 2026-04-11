@@ -12,11 +12,12 @@ format:
 #| echo: false
 #| warning: false
 #| message: false
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE ,message = FALSE)
 
 library(tidyverse)
 library(ggplot2)
 library(here)
+library(knitr)
 ```
 
 ```{r}
@@ -24,6 +25,84 @@ data <- read.csv(here::here("data/35480211_Kai-Hong Su.csv"))
 ```
 
 ## Introduction
-The data analys customer behavior using a marketing dataset. In the datset, there are marketing spend, visit, purchase, and segment for each customer. With these information we can understand whether the marktet spend on customer have positive effect.
+The dataset analyses customer behavior using a marketing dataset. In the dataset, there are variables for marketing spend, visits, purchase amount, and segment for each customer. With this information we can understand whether the marketing spend on customers has positive effects.
 
 ## Research Question section
+This report aims to know the relationship between marketing spend and purchase amount, and whether high marketing spend will cause more visits.
+
+## Dataset Introduction section
+```{r}
+head(data,5)
+data_clean <- data |>
+    select(c(marketing_spend,purchase_amount, visits, segment)) |>
+    drop_na()
+head(data_clean,5)
+```
+
+This dataset contains customer information on marketing activities and purchasing behavior. It includes customer id, signup date, marketing spend, visits, purchase amount, segment, and notes. The dataset is used to analyse whether marketing spend has positive effects on customer behavior.
+
+Before the analysis, a few cleaning steps were done. First, the report only needs marketing_spend, purchase_amount, segment, and visits, so the other columns were removed as they were not relevant to the analysis. Moreover, rows with NA values were removed to increase the quality of the analysis.
+
+## Dataset Description subsection
+
+```{r}
+str(data_clean)
+```
+
+The dataset contains `r nrow(data_clean)` observations and `r ncol(data_clean)` variables.
+The four variables used in the analysis are marketing_spend, purchase_amount, segment, and visits. Only segment is a character variable, and the remaining variables are numeric, with marketing_spend and purchase_amount stored as doubles and visits stored as integer.
+
+```{r}
+#| tbl-cap: "Summarise of the data"
+data_clean |>
+  summarise(
+    avg_marketing = mean(marketing_spend),
+    avg_purchase = mean(purchase_amount),
+    avg_visits = mean(visits))|>
+    knitr::kable()
+```
+
+Table 1 summarises the key statistics of the dataset. The average marketing spend is around `r round(mean(data_clean$marketing_spend), 2)`, while the average purchase amount is around `r round(mean(data_clean$purchase_amount), 2)`. Moreover, average number of visits is `r round(mean(data_clean$visits), 2)`.
+```{r}
+#| fig-cap: "Bar chart show number of customers in different segment"
+data_clean |>
+  ggplot(aes(x = segment)) +
+  geom_bar() +
+  labs(
+    title = "Number of Customers by Segment",
+    x = "Segment",
+    y = "Count"
+  )
+```
+
+Figure 1 shows the number of customers in each segment. From this chart, we can see that most customers in the dataset are in the Consumer segment.
+
+## Results section
+
+```{r}
+#| fig-cap: "Relationship between marketing spend and purchase amount in different segments"
+ggplot(data_clean, aes(x = marketing_spend, y = purchase_amount, color = segment)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Marketing Spend vs Purchase Amount by Segment",
+    x = "Marketing Spend",
+    y = "Purchase Amount"
+  )
+```
+
+Figure 2 shows a positive relationship between marketing spend and purchase amount across all three segments. The correlation between marketing spend and purchase amount is `r round(cor(data_clean$marketing_spend, data_clean$purchase_amount), 2)`, indicating a strong positive association. As marketing spend increases, purchase amount also tends to increase for Consumer, Enterprise, and SMB customers.
+```{r}
+#| fig-cap: "Relationship between marketing spend and visits"
+data_clean |>
+    ggplot(aes(marketing_spend, visits))+
+    geom_point()+
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+        title = "Relationship between Marketing Spend and visits",
+    x = "Marketing Spend",
+    y = " visits"
+ )
+```
+
+Figure 3 shows a positive relationship between marketing spend and visits. The correlation between marketing spend and visits is `r round(cor(data_clean$marketing_spend, data_clean$visits),2)`, indicating a positive but weak association. To sum up, customers with higher marketing spend tend to have more visits. However, the wide spread of the points suggest that there may be other factors affecting customer visits.
